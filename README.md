@@ -108,7 +108,7 @@ $ sumy_eval --help # for more info
 
 ## Python API
 
-Or you can use sumy like a library in your project.
+Or you can use sumy like a library in your project. Create file `sumy_example.py` ([don't name it `sumy.py`](https://stackoverflow.com/questions/41334622/python-sumy-no-module-named-sumy-parsers-html)) with the code below to test it.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -124,12 +124,12 @@ from sumy.nlp.stemmers import Stemmer
 from sumy.utils import get_stop_words
 
 
-LANGUAGE = "czech"
+LANGUAGE = "english"
 SENTENCES_COUNT = 10
 
 
 if __name__ == "__main__":
-    url = "http://www.zsstritezuct.estranky.cz/clanky/predmety/cteni/jak-naucit-dite-spravne-cist.html"
+    url = "https://en.wikipedia.org/wiki/Automatic_summarization"
     parser = HtmlParser.from_url(url, Tokenizer(LANGUAGE))
     # or for plain text files
     # parser = PlaintextParser.from_file("document.txt", Tokenizer(LANGUAGE))
@@ -140,18 +140,4 @@ if __name__ == "__main__":
 
     for sentence in summarizer(parser.document, SENTENCES_COUNT):
         print(sentence)
-```
-
-## Contributing
-
-Make sure you have Python 2.7 or 3.3+ installed. Then, install all the required dependencies:
-
-```sh
-$ pip install -U pytest pytest-cov -e .
-```
-
-You can run the tests via
-
-```sh
-$ pytest
 ```
